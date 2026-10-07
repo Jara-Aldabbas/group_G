@@ -51,17 +51,52 @@ Owner 	Runs the pizzeria, maintains the menu, and keeps records of all sales.
         Include at least one criterion for the normal case and one for an edge case or invalid input (e.g., a quantity of 0, an empty order, a missing file).
 
     💡 The stories below are examples for PizzaRP. Replace them with the stories of your own project.
+## User Stories
 
-All prices are in Swiss francs (CHF). The examples use the following menu from menu.txt:
-No. 	Pizza 	Size 	Unit price
-1 	Margherita 	Medium 	CHF 12.50
-2 	Salami 	Large 	CHF 15.00
-3 	Funghi 	Small 	CHF 9.00
-4 	Hawaii 	Medium 	CHF 14.00
-5 	Diavola 	Large 	CHF 17.50
-US-01: Show the pizza menu
+### User Story 1: Add a Task with Deadline
+**As a** user,  
+**I want** to set a due date when adding a task,  
+**so that** I can manage my time effectively and avoid missing deadlines.
 
-As a customer, I want to see a numbered list of all available pizzas with their size and price, so that I can decide what to order.
+* **Given** a task description "Submit Report" and a valid due date input "2026-10-15",  
+  **When** the user saves the new task,  
+  **Then** the system creates the task with the assigned due date and displays a confirmation message.
+
+* **Given** an invalid due date input such as "next Tuesday" or "32-13-2026",  
+  **When** the user submits the form,  
+  **Then** the system displays a validation error requesting the date in YYYY-MM-DD format.
+
+---
+
+### User Story 2: Mark Task as Completed
+**As a** user,  
+**I want** to mark a task as completed,  
+**so that** I can track my progress and keep my active list up to date.
+
+* **Given** an existing pending task with ID `3`,  
+  **When** the user selects task `3` and chooses "Mark as Completed",  
+  **Then** the task status updates to "Completed" `[X]`.
+
+* **Given** a task ID that does not exist (e.g., entering `99` when only 5 tasks exist),  
+  **When** the user attempts to complete it,  
+  **Then** the system alerts the user that the task ID was not found.
+
+---
+
+### User Story 3: Edit Existing Task
+**As a** user,  
+**I want** to edit the details of an existing task (such as its title or priority),  
+**so that** I can keep my task list accurate when plans change.
+
+* **Given** a task "Buy Milk" with "Low" priority,  
+  **When** the user changes the title to "Buy Almond Milk" and priority to "High",  
+  **Then** the task record updates and reflects the new title and high priority status.
+
+* **Given** an active edit session,  
+  **When** the user submits a blank string for the updated task title,  
+  **Then** the system rejects the change and prompts the user to input a valid title.
+
+
 
 Acceptance criteria
 
