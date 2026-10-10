@@ -66,12 +66,20 @@ Owner 	Runs the pizzeria, maintains the menu, and keeps records of all sales.
   **When** the user submits the form,  
   **Then** the system displays a validation error requesting the date in YYYY-MM-DD format.
 
----
+Ayari Emna 
 
-### User Story 2: Mark Task as Completed
-**As a** user,  
-**I want** to mark a task as completed,  
-**so that** I can track my progress and keep my active list up to date.
+## User Story 4 : Track my habits and goals
+As a user,
+I want to be able to track my set of goals alongside the check-list that I have made so I can see the evolution of my daily habits. This permits me to adapt myself through every achievement that I have made. 
+
+## User Story 5 : Customize my board 
+As a user, 
+I want to be free of customizing my board as I please, this allows me to project myself visually within the app and permits me of adding or modifying any type of elements.
+
+# User Story 6 : Having no limit of text 
+As a user, 
+I want to be able to write as much text as I want, so that I can be more specific about what habit, goal, task I want to track. This allows me to add more details and steps to my daily tracker.
+
 
 * **Given** an existing pending task with ID `3`,  
   **When** the user selects task `3` and chooses "Mark as Completed",  
