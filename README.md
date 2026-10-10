@@ -95,8 +95,49 @@ Owner 	Runs the pizzeria, maintains the menu, and keeps records of all sales.
 * **Given** an active edit session,  
   **When** the user submits a blank string for the updated task title,  
   **Then** the system rejects the change and prompts the user to input a valid title.
+  
+### Niman Aldabbas Jara
+
+### User Story 1: Delete a Task
+**As a** user,  
+**I want** to remove a task from my list when it is no longer needed,  
+**so that** I can keep my workspace clean and uncluttered.
+
+* **Given** a task list containing an active task "Buy Groceries",  
+  **When** the user selects the task and chooses to delete it,  
+  **Then** the task is permanently removed from the list.
+
+* **Given** an empty task list,  
+  **When** the user attempts to delete a task,  
+  **Then** the system displays a message indicating that there are no tasks to delete.
 
 
+### User Story 2: View All Tasks
+**As a** user,  
+**I want** to display a full list of all my saved tasks on the screen,  
+**so that** I can easily see everything I have planned.
+
+* **Given** a task list containing multiple saved tasks,  
+  **When** the user requests to view all tasks,  
+  **Then** every saved task is printed clearly on the screen with its details.
+
+* **Given** an empty task list,  
+  **When** the user requests to view all tasks,  
+  **Then** the system notifies the user that the list is currently empty.
+
+
+### User Story 3: Search for a Task
+**As a** user,  
+**I want** to search for a specific task by typing keywords,  
+**so that** I can find what I am looking for quickly without scrolling.
+
+* **Given** a task list containing the task "Finish Project Report",  
+  **When** the user searches for the keyword "Report",  
+  **Then** the system filters and displays the matching task.
+
+* **Given** a task list,  
+  **When** the user searches for a keyword that does not match any task,  
+  **Then** the system informs the user that no matching tasks were found.
 
 Acceptance criteria
 
