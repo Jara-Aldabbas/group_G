@@ -169,90 +169,38 @@ Owner 	Runs the pizzeria, maintains the menu, and keeps records of all sales.
   **Then** the box will widen and give more space to the additional text.
 
 
-Acceptance criteria
+### Razma Nasrullah 
 
-    The menu is displayed when the staff member selects option 1 ("Show menu") in the main menu.
-    The menu is also displayed automatically before a new order is started (option 2).
-    Each pizza is shown on its own line in the format <No>. <Name> (<Size>) - CHF <Price>, e.g., 1. Margherita (Medium) - CHF 12.50.
-    The numbering starts at 1 and follows the order of the lines in menu.txt.
-    All prices are displayed with exactly two decimal places.
-    Given menu.txt contains the five pizzas listed above, when the menu is displayed, then exactly five numbered lines are shown, from 1. Margherita (Medium) - CHF 12.50 to 5. Diavola (Large) - CHF 17.50.
+### User Story 1 : Track my habits and goals
+**As a** user,
+**I want** to assign categories to my tasks, such as School, Work, or Personal,
+**so that** I can organise my responsibilities and find related tasks more easily. 
 
-US-02: Maintain the menu in a file
+* **Given** a task called "Finish Programming Assignment",
+  **When** the user assigns the category "School" to the task,  
+  **Then** the system saves and displays the task under the selected category.
 
-As an owner, I want the menu to be read from the text file menu.txt, so that I can change pizzas and prices without changing the program code.
+  
+### User Story 2 : Filter Tasks by Status
 
-Acceptance criteria
+**As a** user,
+**I want** to filter my tasks by their status, such as Pending or Completed,
+**so that** I can focus on unfinished tasks or review what I have already accomplished.
 
-    The application reads menu.txt at startup.
-    Each line has the format Name;Size;Price (three fields separated by ;), e.g., Margherita;Medium;12.50.
-    Given the owner adds the line Quattro Formaggi;Large;18.00 to menu.txt, when the application is restarted and the menu is displayed, then 6. Quattro Formaggi (Large) - CHF 18.00 appears as the last line of the menu.
-    Given menu.txt contains the line Calzone;Large;abc, when the menu is loaded, then the warning ⚠️ Skipping invalid line: Calzone;Large;abc is displayed, the line is not added to the menu, and all valid lines are still loaded.
-    Given a line in menu.txt does not contain exactly three fields (e.g., Marinara;Small), when the menu is loaded, then that line is not added to the menu and the application does not crash.
-    Given menu.txt does not exist, when the application starts, then a new menu.txt is created containing the three starter pizzas Margherita (Medium, 12.50), Salami (Large, 15.00), and Funghi (Small, 9.00), and these three pizzas are displayed in the menu.
+* **Given** a task list containing both pending and completed tasks,
+  **When** the user selects the "Pending" filter,
+  **Then** the system displays only tasks that have not been completed.
 
-US-03: Order pizzas with a quantity
 
-As a customer, I want to order several pieces of the same pizza and see the total price for each item, so that I know how much each item of my order costs.
+### User Story 3 : Sort Tasks by Priority
+**As a** user,
+**I want** to sort my tasks according to their priority,
+**so that** I can identify and focus on the most important tasks first.
 
-Acceptance criteria
+* **Given** a task list containing tasks with High, Medium, and Low priorities,
+  **When** the user selects the option to sort by priority,
+  **Then** the system displays high-priority tasks first, followed by medium- and low-priority tasks.
 
-    The staff member selects a pizza by entering its menu number.
-    After selecting a pizza, the staff member enters a quantity (a whole number).
-    Each selected pizza has a unit price taken from the menu.
-    The system multiplies the unit price by the quantity to calculate the item total.
-    The item total is displayed with two decimal places, e.g., 2x Margherita (Medium) - CHF 25.00.
-    Given a pizza with a unit price of CHF 12.50 and a quantity of 2, when the item total is calculated, then the result is CHF 25.00.
-    Given a pizza with a unit price of CHF 17.50 and a quantity of 3, when the item total is calculated, then the result is CHF 52.50.
-    Given a quantity of 0 or smaller (e.g., 0 or -2), when the item total is calculated, then the result is always CHF 0.00 (the calculation never returns a negative amount).
-    Entering done instead of a pizza number finishes the order.
-
-US-04: Reject invalid input
-
-As a staff member, I want the application to reject invalid input with a clear message and let me try again, so that a typing mistake does not crash the program or create a wrong order.
-
-Acceptance criteria
-
-    Given the menu has five pizzas, when the staff member enters 0, 6, -1, abc, or an empty input as pizza number, then the message ⚠️ Invalid choice. is displayed, nothing is added to the order, and the staff member is asked for a pizza number again.
-    Given a valid pizza was selected, when the staff member enters 0, a negative number, a decimal number (e.g., 1.5), or text (e.g., two) as quantity, then the message ⚠️ Invalid quantity. is displayed, the pizza is not added to the order, and the staff member is asked for the quantity again.
-    Given the main menu is displayed, when the staff member enters anything other than 1, 2, or 3, then the message ⚠️ Invalid choice. is displayed and the main menu is shown again.
-    Input is accepted regardless of surrounding spaces and upper/lower case for the keyword, e.g., DONE finishes the order just like done.
-    In none of the cases above does the program terminate with an error (no Python traceback is shown).
-
-US-05: See the running subtotal
-
-As a customer, I want to see the current subtotal after each pizza is added, so that I can keep track of my spending while ordering.
-
-Acceptance criteria
-
-    After each successfully added item, the message Added! Current subtotal: CHF <amount> is displayed.
-    The subtotal is the sum of all item totals (unit price × quantity) in the current order, before any discount.
-    The subtotal is displayed with two decimal places.
-    Given the order already contains 1x Salami (CHF 15.00), when 2x Margherita (CHF 12.50 each) are added, then the message Added! Current subtotal: CHF 40.00 is displayed.
-    An invalid input (see US-04) does not change the subtotal.
-
-US-06: Apply discounts automatically
-
-As an owner, I want the pizzeria's discounts to be applied automatically, so that every customer receives the same discounts and staff do not make calculation mistakes.
-
-Acceptance criteria
-
-    Rule 1 – Free pizza: If an order contains more than 3 pizzas in total (sum of all quantities), the cheapest pizza (one piece) is free.
-    Rule 2 – 10 % discount: If the amount after Rule 1 is CHF 50.00 or more, a discount of 10 % is deducted from that amount.
-    Rule 1 is always applied before Rule 2.
-    Each applied discount is listed with its name and amount, e.g., Free pizza: Funghi (-CHF 9.00) or 10% discount (-CHF 5.25).
-    The final total is displayed with two decimal places.
-
-Given this order 	Subtotal 	Discount(s) applied 	Then the total is
-2x Margherita 	25.00 	none 	CHF 25.00
-1x Margherita, 1x Salami, 1x Funghi, 1x Hawaii (4 pizzas) 	50.50 	Free pizza: Funghi (-9.00) → 41.50 is below 50.00, so no 10 % 	CHF 41.50
-3x Diavola (3 pizzas) 	52.50 	10% discount (-5.25) 	CHF 47.25
-1x Salami, 2x Diavola (exactly CHF 50.00) 	50.00 	10% discount (-5.00) 	CHF 45.00
-2x Diavola, 1x Hawaii (CHF 49.00) 	49.00 	none 	CHF 49.00
-4x Diavola, 1x Funghi (5 pizzas) 	79.00 	Free pizza: Funghi (-9.00) → 70.00; 10% discount (-7.00) 	CHF 63.00
-US-07: See an order summary
-
-As a customer, I want to see a summary of my complete order before the invoice is created, so that I can check that everything is correct.
 
 Acceptance criteria
 
