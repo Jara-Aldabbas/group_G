@@ -38,7 +38,7 @@ The user is a student who wants to organize daily tasks.
 The user can add, view, edit, complete, and delete tasks.
 Role 	Description
 
-## User Stories
+### Orgilmaa Shinebaatar
 
 ### User Story 1: Add a Task with Deadline
 **As a** user,  
@@ -65,8 +65,6 @@ Role 	Description
 * **Given** a task ID that does not exist (e.g., entering `99` when only 5 tasks exist),  
   **When** the user attempts to complete it,  
   **Then** the system alerts the user that the task ID was not found.
-
----
 
 ### User Story 3: Edit Existing Task
 **As a** user,  
@@ -145,39 +143,46 @@ Role 	Description
   
 ### Emna Ayari
 
-### User Story 1 : Track my habits and goals
+### User Story 7 : Setting numerous lists of tasks 
 **As a** user,
-**I want** to be able to track my set of goals alongside the check-list that I have made,
-**so that** I can see the evolution of my daily habits. This permits me to adapt myself through every achievement that I have made. 
+**I want** to be able to set many lists of tasks depending on my week planning or my needs at the moment,
+**so that** I can allocate the tasks that I have in a precise list.
 
-* **Given** a check-list that shows me all of the tasks of the day 
-  **When** the user clicks on the completed task,  
-  **Then** the task will automatically be removed.
+**Acceptance Criteria:**
 
+* **Given** an option which permits me to open another tab of list of tasks, 
+  **When** the user clicks on the option,
+  **Then** the new list will automatically appear.
 
-### User Story 2 : Customize my board 
+  * ** Given a list with no name, then the user will not be able to open another tab of list.
+
+### User Story 8 : Set reminders to my tasks 
 **As a** user,
-**I want** to be free to of customizing my board as I please,
-**so that** I can project myself visually within the app and add or modify any type of elements.
+**I want** to be reminded of my tasks before the due deadline,
+**so that** I can finish my task in due time and check it off my list.
 
-* **Given** a board with different fonts,
-  **When** the user clicks on one of the options of the fonts visuals,
-  **Then** the board will change its color and design .
+**Acceptance Criteria:**
+
+* **Given** a reminder option with notifications,
+  **When** the time period of completing the task comes,
+  **Then** then a notification will pop out on the screen of the user.
 
 
-### User Story 3 : Having no limit of text
+### User Story 9 : Having my tasks set in a calendar
 **As a** user,
-**I want** to be able to write as much text as I want,
-**so that** I can be more specific about what habit, goal, task I want to track and what I can add as details and steps to my daily tracker.
+**I want** to be able to link my tasks to a calendar,
+**so that** I can have a bigger picture of what is set for the week, month or the whole year.
 
-* **Given** a box where text can be entered,
-  **When** the user wants to add text or modify it, 
-  **Then** the box will widen and give more space to the additional text.
+**Acceptance Criteria:**
+
+* **Given** a calendar where i can add tasks to its slot,
+  **When** the user wants to add a specific task to a day,
+  **Then** text can be put within the date cell.
 
 
 ### Razma Nasrullah 
 
-### User Story 1 : Track my habits and goals
+### User Story 10 : Track my habits and goals
 **As a** user,
 **I want** to assign categories to my tasks, such as School, Work, or Personal,
 **so that** I can organise my responsibilities and find related tasks more easily. 
@@ -187,7 +192,7 @@ Role 	Description
   **Then** the system saves and displays the task under the selected category.
 
   
-### User Story 2 : Filter Tasks by Status
+### User Story 11 : Filter Tasks by Status
 
 **As a** user,
 **I want** to filter my tasks by their status, such as Pending or Completed,
@@ -198,7 +203,7 @@ Role 	Description
   **Then** the system displays only tasks that have not been completed.
 
 
-### User Story 3 : Sort Tasks by Priority
+### User Story 12 : Sort Tasks by Priority
 **As a** user,
 **I want** to sort my tasks according to their priority,
 **so that** I can identify and focus on the most important tasks first.
@@ -266,13 +271,13 @@ The application should be simple and easy to use.
 
 The application validates all user input to ensure data integrity and a smooth user experience. This is implemented in main-invoice.py as follows:
 
-    Menu selection: When the user enters a pizza number, the program checks if the input is a digit and within the valid menu range:
+    Entering a new task: When the user wants to enter a new task to achieve, the "+" sign will be pressed and text cell will directly appear :
 
-     if not choice.isdigit() or not (1 <= int(choice) <= len(menu)):
-     		print("⚠️ Invalid choice.")
-     		continue
+    task = input("new task :")
 
-    This ensures only valid menu items can be ordered.
+    If not, then text can not be added.
+
+    This ensures that the user knows that to enter new tasks, the "+" sign has to be pressed beforehand.
 
     Quantity input: After a pizza is selected, the program asks for the quantity until a whole number of at least 1 is entered:
 
