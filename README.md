@@ -1,7 +1,6 @@
-🍕 PizzaRP – Pizzeria Reference Project (Console)
+# To-Do List – Console Application
 
     🚧 This is a template repository for student project in the course Programming Foundations at FHNW, BSc BIT.
-    🚧 Do not keep this section in your final submission.
 
 This project is intended to:
 
@@ -14,43 +13,31 @@ This project is intended to:
     Work only within your own copy — do not push to the original template.
     Commit regularly to track your progress.
 
-🍕 TEMPLATE for documentation
-
-    🚧 Please remove this paragraphs having "🚧". These are comments for preparing the documentations.
-
-📝 Analysis
-
 Problem
 
-    🚧 Describe the real-world problem your application solves. (Not HOW, but WHAT)
+Students often have many tasks, assignments, and deadlines to manage. It can be difficult to remember everything and keep track of what needs to be done.
 
-💡 Example: In a small local pizzeria, the staff writes orders and calculates totals by hand. This causes mistakes and inconsistent orders or discounts.
+Our To-Do List application helps users organize their tasks in one place. Users can add, edit, delete, and complete tasks. They can also organize tasks by category and track their progress.
+
+The application will run in the console using Python.
 
 Scenario
 
-    🚧 Describe when and how a user will use your application
+A student wants to organize their daily tasks using a simple To-Do List application.
 
-💡 Example: PizzaRP solves the part of the problem where orders and totals are created by letting a user select items from a menu and automatically generating a correct invoice.
-👤 User Roles
+The student opens the application in the console and can add new tasks, view existing tasks, mark tasks as completed, or delete tasks.
 
-    🚧 Identify who uses your application before writing stories. Writing every story for a generic "user" hides the fact that different people need different things (M. Cohn, User Stories Applied, ch. 3 "User Role Modeling"). Name your roles and use them consistently in your stories.
+For example, the student adds a task called “Study Python”. After finishing it, the student marks it as completed.
 
+The application helps students keep track of their tasks in a simple way.
+
+User (Student)
+
+The user is a student who wants to organize daily tasks.
+
+The user can add, view, edit, complete, and delete tasks.
 Role 	Description
-Customer 	Orders pizzas and wants to know what they have ordered and how much they need to pay.
-Staff member 	Takes orders at the counter and enters them into the console application.
-Owner 	Runs the pizzeria, maintains the menu, and keeps records of all sales.
-📖 User Stories
 
-    🚧 How to write a good user story
-
-        Use the scheme "As a <role>, I want <capability>, so that <benefit>." The benefit ("so that …") explains why the story is valuable. If you cannot name a benefit, question whether the story is needed.
-        A story consists of three parts, the "three Cs": the Card (the short sentence), the Conversation (the details discussed within the team), and the Confirmation (the acceptance criteria, which show when the story is done).
-        Check each story against INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable.
-        Acceptance criteria must be specific and testable. Use concrete values (e.g., "CHF 25.00", "two decimal places") and avoid vague words such as "fast", "easy", "correct", or "user-friendly". A good criterion can be turned directly into a test case with an input and an expected output.
-        Write acceptance criteria either as a checklist of observable rules or in the Given–When–Then structure: Given a starting situation, when an action happens, then a specific, observable result occurs.
-        Include at least one criterion for the normal case and one for an edge case or invalid input (e.g., a quantity of 0, an empty order, a missing file).
-
-    💡 The stories below are examples for PizzaRP. Replace them with the stories of your own project.
 ## User Stories
 
 ### User Story 1: Add a Task with Deadline
@@ -93,50 +80,69 @@ Owner 	Runs the pizzeria, maintains the menu, and keeps records of all sales.
 * **Given** an active edit session,  
   **When** the user submits a blank string for the updated task title,  
   **Then** the system rejects the change and prompts the user to input a valid title.
-  
+
 ### Niman Aldabbas Jara
 
-### User Story 1: Delete a Task
-**As a** user,  
-**I want** to remove a task from my list when it is no longer needed,  
-**so that** I can keep my workspace clean and uncluttered.
+### User Story 4: Delete a Task
 
-* **Given** a task list containing an active task "Buy Groceries",  
-  **When** the user selects the task and chooses to delete it,  
-  **Then** the task is permanently removed from the list.
+**As a** user,
+**I want** to delete a task,
+**so that** I can remove tasks I no longer need.
 
-* **Given** an empty task list,  
-  **When** the user attempts to delete a task,  
-  **Then** the system displays a message indicating that there are no tasks to delete.
+**Acceptance Criteria:**
 
+* **Given** a task named "Study Python",
+  **When** the user deletes the task,
+  **Then** the task is removed from the list.
 
-### User Story 2: View All Tasks
-**As a** user,  
-**I want** to display a full list of all my saved tasks on the screen,  
-**so that** I can easily see everything I have planned.
+* **Given** an empty task list,
+  **When** the user tries to delete a task,
+  **Then** the system displays "No tasks available."
 
-* **Given** a task list containing multiple saved tasks,  
-  **When** the user requests to view all tasks,  
-  **Then** every saved task is printed clearly on the screen with its details.
+* **Given** a task list with two tasks,
+  **When** the user enters an invalid task number,
+  **Then** the system displays "Task not found."
 
-* **Given** an empty task list,  
-  **When** the user requests to view all tasks,  
-  **Then** the system notifies the user that the list is currently empty.
+### User Story 5: View All Tasks
 
+**As a** user,
+**I want** to view all my tasks,
+**so that** I can see what I need to do.
 
-### User Story 3: Search for a Task
-**As a** user,  
-**I want** to search for a specific task by typing keywords,  
-**so that** I can find what I am looking for quickly without scrolling.
+**Acceptance Criteria:**
 
-* **Given** a task list containing the task "Finish Project Report",  
-  **When** the user searches for the keyword "Report",  
-  **Then** the system filters and displays the matching task.
+* **Given** a list containing three tasks,
+  **When** the user selects "View Tasks",
+  **Then** all three tasks are displayed.
 
-* **Given** a task list,  
-  **When** the user searches for a keyword that does not match any task,  
-  **Then** the system informs the user that no matching tasks were found.
+* **Given** an empty task list,
+  **When** the user selects "View Tasks",
+  **Then** the system displays "No tasks available."
 
+* **Given** a list containing completed and incomplete tasks,
+  **When** the user selects "View Tasks",
+  **Then** all tasks are displayed with their status.
+
+### User Story 6: Search for a Task
+
+**As a** user,
+**I want** to search for a task by its name,
+**so that** I can find it quickly.
+
+**Acceptance Criteria:**
+
+* **Given** a task named "Study Python",
+  **When** the user searches for "Study Python",
+  **Then** the task is displayed.
+
+* **Given** a task list,
+  **When** the user searches for a task that does not exist,
+  **Then** the system displays "Task not found."
+
+* **Given** an empty task list,
+  **When** the user tries to search for a task,
+  **Then** the system displays "No tasks available."
+  
 ### Emna Ayari
 
 ### User Story 1 : Track my habits and goals
@@ -243,22 +249,18 @@ Use cases:
 
 ✅ Project Requirements
 
-Each app must meet the following three criteria in order to be accepted (see also the official project guidelines PDF on Moodle):
+The To-Do List application will be developed using Python and will run in the console.
 
-    Interactive app (console input)
-    Data validation (input checking)
-    File processing (read/write)
+The application should allow users to:
 
-1. Interactive App (Console Input)
+1. Add new tasks.
+2. View all tasks.
+3. Edit existing tasks.
+4. Mark tasks as completed.
+5. Delete tasks.
+6. View completed and incomplete tasks.
 
-    🚧 In this section, document how your project fulfills each criterion.
-
-The application interacts with the user via the console. Users can:
-
-    View the pizza menu
-    Select pizzas and quantities
-    See the running total
-    Receive an invoice generated as a file
+The application should be simple and easy to use.
 
 2. Data Validation
 
