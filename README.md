@@ -154,7 +154,7 @@ Role 	Description
   **When** the user clicks on the option,
   **Then** the new list will automatically appear.
 
-  * ** Given a list with no name, then the user will not be able to open another tab of list.
+* ** Given a list with no name, then the user will not be able to open another tab of list.
 
 ### User Story 8 : Set reminders to my tasks 
 **As a** user,
