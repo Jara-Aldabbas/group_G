@@ -143,10 +143,10 @@ Role 	Description
   
 ### Emna Ayari
 
-### User Story 7 : Setting numerous lists of tasks 
+### User Story 7 : viewing delayed tasks 
 **As a** user,
-**I want** to be able to set many lists of tasks depending on my week planning or my needs at the moment,
-**so that** I can allocate the tasks that I have in a precise list.
+**I want** to be able to see which tasks have been delayed,
+**so that** I can be up to date with my tasks.
 
 **Acceptance Criteria:**
 
