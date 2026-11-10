@@ -16,9 +16,12 @@ while True:
   print(f" you selected : {choice}")
   if choice == "1":
    print("you selected View All Tasks")
-   print(f"1. {task1}- {status1}")
-   print(f"2. {task2}- {status2}")  
-   print(f"3. {task3}- {status3}")
+   if task1 != "":
+    print(f"1. {task1} - {status1}")
+   if task2 != "":
+    print(f"2. {task2} - {status2}")
+   if task3 != "":
+    print(f"3. {task3} - {status3}")
   elif choice == "2":
    print("you selected delete tasks")
    delete_choice = input("which task do you want to delete? (1, 2, 3): ")
