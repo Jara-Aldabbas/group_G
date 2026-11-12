@@ -1,0 +1,71 @@
+def create_task():
+    task = "start the report"
+    due_date = "tomorrow"
+    is_completed = "No"
+
+    print("Task:", task)
+    print("Due Date:", due_date)
+    print("Completed:", is_completed)
+
+create_task()
+
+def create_task():
+    task = "Finish the project"
+    due_date = "yesterday"
+    is_completed = False
+
+    if due_date == "yesterday" and not is_completed:
+        status = "Overdue"
+    else : 
+        status = "On Time"
+
+    print("task:" , task)
+    print("due date:", due_date)
+    print("status:", status)
+
+create_task()
+
+from datetime import date
+
+#Tasks list 
+
+tasks = [
+    {
+            "task": "Finish the project",
+            "due_date": date(2026,11,10),
+            "completed": False 
+    },
+    {
+            "task": "Start the report",
+            "due_date": date(2026,11,15),
+            "completed": False
+    },
+    {
+            "task": "Do the assignments",
+            "due_date": date(2026,11,12),
+            "completed": True
+    }
+]
+
+def display_tasks():
+
+    today = date.today()
+
+    for task in tasks:
+
+        if task["completed"]:
+            status = "Finished"
+
+        elif task["due_date"] < today :
+            status = ""
+
+        else : 
+            status = "On Time"
+
+        print("---------------------------")
+        print("task:", task["task"])
+        print("due date:", task["due_date"])
+        print("status", status)
+
+        display_tasks()
+
