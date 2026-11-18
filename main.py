@@ -17,6 +17,14 @@ def input_date(prompt):
         except ValueError:
             print("Please enter the date in YYYY-MM-DD format.")
 
+def input_int(prompt):
+    while True:
+        value = input(prompt)
+        try:
+            return int(value)
+        except ValueError:
+            print("Please enter a whole number.")
+
 tasks = []
 next_id = 1
 
@@ -24,7 +32,8 @@ while True:
     print("\n=== TO-DO LIST ===")
     print("1. Add task")
     print("2. View tasks")
-    print("3. Exit")
+    print("3. Mark task as completed")
+    print("4. Exit")
     choice = input("Choose an option: ")
 
     if choice == "1":
@@ -41,8 +50,16 @@ while True:
             for task in tasks:
                 print(task["id"], task["title"], task["due"], task["done"])
     elif choice == "3":
+        task_id = input_int("Enter the ID of the task to complete: ")
+        found = False
+        for task in tasks:
+            if task["id"] == task_id:
+                task["done"] = True
+                found = True
+                print("Task", task_id, "marked as completed.")
+        if not found:
+            print("Task ID not found.")
+    elif choice == "4":
         print("Goodbye")
         break
-    else:
-        print("Invalid choice.")
         
