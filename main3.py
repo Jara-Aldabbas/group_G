@@ -6,7 +6,7 @@ while True:
     print("Choose a category:")
     print("1. School")
     print("2. Work")
-    print("3.Personal")
+    print("3. Personal")
 
     choice = input("Enter 1, 2 or 3: ")
 
@@ -21,6 +21,8 @@ while True:
     task = {
         "name": name, 
         "category": category 
+
+        
 
     }
 
