@@ -27,44 +27,50 @@ create_task()
 
 from datetime import date
 
-#Tasks list 
+#Example tasks (only for testing)
 
 tasks = [
     {
-            "task": "Finish the project",
-            "due_date": date(2026,11,10),
-            "completed": False 
+            "id": 1,
+            "title":"Finish the project",
+            "due": date(2026, 11, 10),
+            "priority": "High",
+            "done": False 
     },
     {
-            "task": "Start the report",
-            "due_date": date(2026,11,15),
-            "completed": False
+            "id": 2,
+            "title": "Study Python",
+            "due": date(2026, 11, 25),
+            "priority" : "Medium",
+            "done": False
     },
     {
-            "task": "Do the assignments",
-            "due_date": date(2026,11,12),
-            "completed": True
+            "id": 3,
+            "title": "Do the assignments",
+            "due": date(2026, 11, 12),
+            "priority": "Low",
+            "done": True
     }
 ]
 
-def display_tasks():
-
+#View overdue tasks
+def view_overdue_tasks():
     today = date.today()
+    found = False 
+
+    print("\n---OVERDUE TASKS---")
 
     for task in tasks:
 
-        if task["completed"]:
-            status = "Finished"
+        if task["due"] < today and not task["done"]:
+            print("Task:", task["title"])
+            print("Due date:", task["due"])
+            print("Priority:", task["priority"])
+            print("--------------------")
+            found = True 
 
-        elif task["due_date"] < today :
-            status = ""
+    if not found :
+        print("No overdue tasks!")
 
-        else : 
-            status = "On Time"
-
-        print("---------------------------")
-        print("task:", task["task"])
-        print("due date:", task["due_date"])
-        print("status", status)
-
-        display_tasks()
+#Run the function
+view_overdue_tasks
