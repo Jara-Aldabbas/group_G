@@ -1,0 +1,23 @@
+---TASK LIST---
+
+Task ID: 1
+Title:Finish the project
+Due date:2026-11-20
+Priority:High
+Status: Not completed
+----------------
+
+Task ID: 2
+Title:Study Python
+Due date:2026-11-25
+Priority:Medium
+Status: Not completed
+----------------
+
+Task ID: 3
+Title:Do the assignments
+Due date:2026-11-12
+Priority:Low
+Status: Completed
+----------------
+
