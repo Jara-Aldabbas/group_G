@@ -143,41 +143,43 @@ Role 	Description
   
 ### Emna Ayari
 
-### User Story 7 : viewing delayed tasks 
+### User Story 7 : Viewing delayed tasks 
 **As a** user,
 **I want** to be able to see which tasks have been delayed,
 **so that** I can be up to date with my tasks.
 
 **Acceptance Criteria:**
 
-* **Given** an option which permits me to open another tab of list of tasks, 
-  **When** the user clicks on the option,
-  **Then** the new list will automatically appear.
+* **Given** a task list containing pending tasks with deadlines in the past,
+  **When** the user selects "View Delayed Tasks",
+  **Then** the system displays all tasks whose deadlines have passed and whose status is still pending.
 
-* **Given** a list with no name, then the user will not be able to open another tab of list.
+* **Given** a task list with no delayed tasks,
+* **When** the user selects "View Delayed Tasks",
+* **Then** the system displays the message "No delayed tasks found."
 
-### User Story 8 : Set reminders to my tasks 
+### User Story 8 : Set a task description
 **As a** user,
-**I want** to be reminded of my tasks before the due deadline,
-**so that** I can finish my task in due time and check it off my list.
+**I want** to add a description to my tasks 
+**so that** I can remember important details about what I need to do.
 
 **Acceptance Criteria:**
 
-* **Given** a reminder option with notifications,
-  **When** the time period of completing the task comes,
+* **Given** a task named "School Project" 
+  **When** the user adds a description such as "Prepare the presentation", then the system saves the description with the task.
   **Then** then a notification will pop out on the screen of the user.
 
 
-### User Story 9 : Having my tasks set in a calendar
+### User Story 9 : Export tasks to a text life 
 **As a** user,
-**I want** to be able to link my tasks to a calendar,
-**so that** I can have a bigger picture of what is set for the week, month or the whole year.
+**I want** to export my tasks to a text file, 
+**so that** so that I can keep a copy of my task list outside the application.
 
 **Acceptance Criteria:**
 
-* **Given** a calendar where i can add tasks to its slot,
-  **When** the user wants to add a specific task to a day,
-  **Then** text can be put within the date cell.
+* **Given** a task list containing several tasks
+  **When** the user selects "Export Tasks"
+  **Then** the system saves all tasks in a text file.
 
 
 ### Razma Nasrullah 
