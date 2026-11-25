@@ -89,7 +89,7 @@ Role 	Description
 
 **Acceptance Criteria:**
 
-* **Given** a task named "Study Python",
+* **Given** a task named "study python",
   **When** the user deletes the task,
   **Then** the task is removed from the list.
 
@@ -130,7 +130,7 @@ Role 	Description
 **Acceptance Criteria:**
 
 * **Given** a task named "Study Python",
-  **When** the user searches for "Study Python",
+  **When** the user searches for "study python",
   **Then** the task is displayed.
 
 * **Given** a task list,
