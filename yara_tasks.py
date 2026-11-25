@@ -1,112 +1,123 @@
-
 def create_task(name, description="", completed=False, due_date=None):
-    return {
+    task = {
         "name": name,
         "description": description,
         "completed": completed,
         "due_date": due_date,
     }
- 
- 
+    return task
+
+
 def user_input_task():
-    name = input("Task name: ").strip()
-    description = input("Description (optional): ").strip()
-    due_date = input("Due date (optional, e.g. 2026-12-06): ").strip()
+    name = input("Task name: ")
+    description = input("Description (optional): ")
+    due_date = input("Due date (optional): ")
     if due_date == "":
         due_date = None
-    return create_task(name, description, False, due_date)
- 
- 
+    task = create_task(name, description, False, due_date)
+    return task
+
+
 def print_task(task, number):
-    status = "Completed" if task["completed"] else "Incomplete"
-    due_date = task["due_date"] if task["due_date"] is not None else "No due date"
-    description = task["description"] if task["description"] != "" else "-"
-    print(f"{number}. {task['name']}  [{status}]")
-    print(f"   Description: {description}")
-    print(f"   Due date:    {due_date}")
- 
- 
+    if task["completed"]:
+        status = "completed"
+    else:
+        status = "incomplete"
+
+    name = task["name"]
+    description = task["description"]
+    due_date = task["due_date"]
+    if due_date == None:
+        due_date = "no due date"
+
+    print(f"{number}. {name} - {status}")
+    print(f"   description: {description}")
+    print(f"   due date: {due_date}")
+
+
 def view_tasks(tasks):
     print("you selected View Tasks")
     if len(tasks) == 0:
         print("No tasks available.")
-        return
-    print("-" * 40)
-    for i, task in enumerate(tasks, start=1):
-        print_task(task, i)
-    print("-" * 40)
- 
- 
+    else:
+        for i in range(len(tasks)):
+            print_task(tasks[i], i + 1)
+
+
 def delete_task(tasks):
     print("you selected Delete Task")
     if len(tasks) == 0:
         print("No tasks available.")
-        return
-    number = input(f"which task do you want to delete? (1-{len(tasks)}): ").strip()
-    if number.isdigit() and 1 <= int(number) <= len(tasks):
-        removed = tasks.pop(int(number) - 1)
-        print(f"task '{removed['name']}' deleted")
     else:
-        print("Task not found.")
- 
- 
+        try:
+            number = int(input(f"which task do you want to delete? (1-{len(tasks)}): "))
+        except ValueError:
+            print("Task not found.")
+        else:
+            if number >= 1 and number <= len(tasks):
+                name = tasks[number - 1]["name"]
+                del tasks[number - 1]
+                print(f"task '{name}' deleted")
+            else:
+                print("Task not found.")
+
+
 def search_task(tasks):
     print("you selected Search Task")
     if len(tasks) == 0:
         print("No tasks available.")
-        return
-    search = input("enter task name: ").strip().lower()
-    for i, task in enumerate(tasks, start=1):
-        if task["name"].strip().lower() == search:
-            print("task found:")
-            print_task(task, i)
-            return
-    print("Task not found.")
- 
- 
+    else:
+        search = input("enter task name: ")
+        found = False
+        for i in range(len(tasks)):
+            if tasks[i]["name"] == search:
+                print("task found:")
+                print_task(tasks[i], i + 1)
+                found = True
+        if not found:
+            print("Task not found.")
+
+
 def add_task(tasks):
     print("you selected Add Task")
     task = user_input_task()
     if task["name"] == "":
         print("Task name cannot be empty.")
-        return
-    tasks.append(task)
-    print(f"task '{task['name']}' added")
- 
- 
+    else:
+        tasks.append(task)
+        print(f"task '{task['name']}' added")
+
+
 def print_menu():
-    print("\n===== MY TASKS =====")
     print("1. View Tasks")
     print("2. Delete Task")
     print("3. Search Task")
     print("4. Add Task")
     print("5. Exit")
- 
- 
-def main():
-    tasks = [
-        create_task("Study Python"),
-        create_task("Finish Homework", completed=True),
-        create_task("Prepare Presentation", "Final project slides", False, "2026-12-06"),
-    ]
- 
-    while True:
-        print_menu()
-        choice = input("enter_your_choice_: ").strip()
-        print(f" you selected : {choice}")
-        if choice == "1":
-            view_tasks(tasks)
-        elif choice == "2":
-            delete_task(tasks)
-        elif choice == "3":
-            search_task(tasks)
-        elif choice == "4":
-            add_task(tasks)
-        elif choice == "5":
-            print("Goodbye!")
-            break
-        else:
-            print("invalid choice")
- 
- 
-main()
+
+
+# Program flow
+tasks = [
+    create_task("Study Python"),
+    create_task("Finish Homework", completed=True),
+    create_task("Prepare Presentation", "Final project slides", False, "2026-12-06"),
+]
+
+print("MY TASKS")
+print_menu()
+choice = input("enter_your_choice_: ")
+while choice != "5":
+    print(f"you selected : {choice}")
+    if choice == "1":
+        view_tasks(tasks)
+    elif choice == "2":
+        delete_task(tasks)
+    elif choice == "3":
+        search_task(tasks)
+    elif choice == "4":
+        add_task(tasks)
+    else:
+        print("invalid choice")
+    print_menu()
+    choice = input("enter_your_choice_: ")
+print("Goodbye!")
