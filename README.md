@@ -129,7 +129,7 @@ Role 	Description
 
 **Acceptance Criteria:**
 
-* **Given** a task named "Study Python",
+* **Given** a task named "study python",
   **When** the user searches for "study python",
   **Then** the task is displayed.
 
