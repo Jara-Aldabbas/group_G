@@ -32,6 +32,25 @@ def input_priority(prompt):
             return value
         else:
             print("Priority must be High, Medium or Low.")
+def input_category(prompt):
+    while True: 
+        print("Choose a category:") 
+        print("1. School") 
+        print("2. Work")
+        print("3. Personal")
+
+        choice = input(prompt)
+
+        if choice == "1": 
+            return "School"
+        elif choice == "2":
+            return "Work"
+        elif choice == "3":
+            return "Personal"
+        else:
+            print("Invalid category. Try again.")
+
+
 
 tasks = []
 next_id = 1
@@ -39,7 +58,7 @@ next_id = 1
 def save_tasks():
     with open("tasks.txt", "w") as file:
         for task in tasks:
-            line = str(task["id"]) + ";" + task["title"] + ";" + task["due"] + ";" + task["priority"] + ";" + str(task["done"])
+            line = str(task["id"]) + ";" + task["title"] + ";" + task["due"] + ";" + task["priority"] + ";" + str(task["done"]) + ";" + task ["category"]
             file.write(line + "\n")
 
 def load_tasks():
@@ -48,7 +67,7 @@ def load_tasks():
         with open("tasks.txt", "r") as file:
             for line in file:
                 parts = line.strip().split(";")
-                if len(parts) != 5:
+                if len(parts) not in [5, 6]:
                     print("Skipping invalid line:", line.strip())
                     continue
                 task = {
@@ -56,7 +75,8 @@ def load_tasks():
                     "title": parts[1],
                     "due": parts[2],
                     "priority": parts[3],
-                    "done": parts[4] == "True"
+                    "done": parts[4] == "True",
+                    "category": parts [5] if len (parts) == 6 else "Other"
                 }
                 tasks.append(task)
                 if task["id"] >= next_id:
@@ -69,7 +89,8 @@ def add_task():
     title = input_string("Enter task title: ")
     due = input_date("Enter due date (YYYY-MM-DD): ")
     priority = input_priority("Enter priority (High/Medium/Low): ")
-    task = {"id": next_id, "title": title, "due": due, "priority": priority, "done": False}
+    category = input_category("Enter your choice:")
+    task = {"id": next_id, "title": title, "due": due, "priority": priority, "done": False, "category": category}
     tasks.append(task)
     next_id = next_id + 1
     print("Task added:", title)
@@ -84,7 +105,7 @@ def view_tasks():
                 status = "[X]"
             else:
                 status = "[ ]"
-            print(task["id"], status, task["title"], task["due"], task["priority"])
+            print(task["id"], status, task["title"], task["due"], task["priority"], task ["category"])
 
 def complete_task():
     task_id = input_int("Enter the ID of the task to complete: ")
@@ -110,6 +131,50 @@ def edit_task():
     if not found:
         print("Task ID not found.")
     save_tasks()
+def filter_tasks():
+    print("1. Pending")
+    print("2. Completed")
+
+    choice = input("Choose a status: ")
+
+    if choice == "1":
+        selected_status = False
+    elif choice == "2":
+        selected_status = True
+    else:
+        print("Invalid choice.")
+        return
+
+    found = False
+
+    for task in tasks:
+        if task["done"] == selected_status:
+            print(task["id"], task["title"], task["due"],
+                  task["priority"], task["category"])
+            found = True
+
+    if not found:
+        print("No matching tasks found.")
+def sort_tasks():
+    if len(tasks) == 0:
+        print("No tasks available.")
+        return
+
+    priority_order = {
+        "High": 1,
+        "Medium": 2,
+        "Low": 3
+    }
+
+    sorted_tasks = sorted(
+        tasks, key=lambda task: priority_order[task["priority"]]
+    )
+
+    print("Tasks sorted by priority:")
+
+    for task in sorted_tasks:
+        print(task["id"], task["title"], task["due"],
+              task["priority"], task["category"])
 
 load_tasks()
 
@@ -119,7 +184,9 @@ while True:
     print("2. View tasks")
     print("3. Mark task as completed")
     print("4. Edit task")
-    print("5. Exit")
+    print("5. Filter tasks by status")
+    print("6. Sort tasks by priority")
+    print("7. Exit")
     choice = input("Choose an option: ")
 
     if choice == "1":
@@ -131,7 +198,12 @@ while True:
     elif choice == "4":
         edit_task()
     elif choice == "5":
+        filter_tasks()
+    elif choice == "6":
+        sort_tasks()
+    elif choice == "7":
         print("Goodbye")
+        
         break
     else:
         print("Invalid choice.")
