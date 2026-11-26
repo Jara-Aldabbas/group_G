@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 
 def input_string(prompt):
     while True:
@@ -176,7 +176,27 @@ def sort_tasks():
         print(task["id"], task["title"], task["due"],
               task["priority"], task["category"])
 
-load_tasks()
+
+def view_overdue_tasks():
+    today = date.today()
+    found = False 
+
+    print("\n---OVERDUE TASKS---")
+
+    for task in tasks:
+         due_date = datetime.strptime(task["due"], "%Y-%m-%d").date()
+
+         if due_date < today and not task["done"]:
+            print("Task:", task["title"])
+            print("Due date:", task["due"])
+            print("Priority:", task["priority"])
+            print("----------------------")
+            found = True 
+
+    if not found:
+        print("No overdue tasks!")
+
+load_tasks() 
 
 while True:
     print("\n=== TO-DO LIST ===")
@@ -186,7 +206,8 @@ while True:
     print("4. Edit task")
     print("5. Filter tasks by status")
     print("6. Sort tasks by priority")
-    print("7. Exit")
+    print("7. View overdue tasks")
+    print("8. Exit")
     choice = input("Choose an option: ")
 
     if choice == "1":
@@ -202,8 +223,9 @@ while True:
     elif choice == "6":
         sort_tasks()
     elif choice == "7":
-        print("Goodbye")
-        
+       view_overdue_tasks()
+    elif choice == "8":
+        print("Goodbye") 
         break
     else:
         print("Invalid choice.")

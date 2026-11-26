@@ -1,1 +1,2 @@
-1;buy milk;2026-11-22;Low;True
+1;buy milk;2026-11-22;Low;True;Other
+2;Prepare the presentation;2026-11-30;High;False;School

@@ -25,7 +25,7 @@ def create_task():
 
 create_task()
 
-from datetime import date
+from datetime import datetime, date 
 
 #Example tasks (only for testing)
 
@@ -61,16 +61,18 @@ def view_overdue_tasks():
     print("\n---OVERDUE TASKS---")
 
     for task in tasks:
+         due_date = datetime.strptime(task["due"], "%Y-%m-%d").date()
 
-        if task["due"] < today and not task["done"]:
+         if due_date < today and not task["done"]:
             print("Task:", task["title"])
             print("Due date:", task["due"])
             print("Priority:", task["priority"])
-            print("--------------------")
+            print("----------------------")
             found = True 
 
-    if not found :
-        print("No overdue tasks!")
+    if not found:
+            print("No overdue tasks!")
+
 
 #Run the function
 view_overdue_tasks
