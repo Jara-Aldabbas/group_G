@@ -214,39 +214,6 @@ Role 	Description
   **When** the user selects the option to sort by priority,
   **Then** the system displays high-priority tasks first, followed by medium- and low-priority tasks.
 
-
-Acceptance criteria
-
-    The summary is shown after the staff member enters done.
-    The summary starts with the heading --- ORDER SUMMARY ---.
-    It lists every ordered item with quantity, name, size, and item total, e.g., 2x Margherita (Medium) - CHF 25.00.
-    It lists every applied discount (see US-06).
-    It ends with the final amount in the format TOTAL: CHF <amount> with two decimal places.
-    Given the staff member enters done without having added any pizza, when the order is finished, then the message ⚠️ No pizzas selected. is displayed, no summary and no invoice are created, and the main menu is shown again.
-
-US-08: Save the invoice as a file
-
-As an owner, I want each completed order to be saved as a numbered invoice file, so that I have a permanent record of all sales.
-
-Acceptance criteria
-
-    An invoice file is created automatically for every order that contains at least one pizza.
-    The file name follows the pattern invoice_<NNN>.txt with a three-digit number, e.g., invoice_001.txt.
-    Given no invoice file exists yet, when an order is completed, then the file invoice_001.txt is created.
-    Given invoice_001.txt and invoice_002.txt already exist, when an order is completed, then the file invoice_003.txt is created and the existing files remain unchanged.
-    The invoice contains the heading 🍕 PIZZA RP INVOICE, one line per ordered item (quantity, name, size, item total), all applied discounts, and the line TOTAL: CHF <amount>.
-    The amounts in the invoice file are identical to the amounts shown in the order summary (US-07).
-    After saving, the message ✅ Invoice saved as invoice_<NNN>.txt is displayed.
-
-US-09: Exit the application
-
-As a staff member, I want to close the application via the main menu, so that I can end my shift in a controlled way.
-
-Acceptance criteria
-
-    Given the main menu is displayed, when the staff member enters 3, then the message Goodbye 👋 is displayed and the program ends.
-    All invoices created during the session remain saved after the program has ended.
-
 Use cases:
 
     Show Menu (from menu.txt)
@@ -281,15 +248,15 @@ The application validates all user input to ensure data integrity and a smooth u
 
     This ensures that the user knows that to enter new tasks, the "+" sign has to be pressed beforehand.
 
-    Quantity input: After a pizza is selected, the program asks for the quantity until a whole number of at least 1 is entered:
+    Task selection: When the user wants to modify, delete, or mark a task as completed, the program checks whether the selected task exists:
 
      if not quantity.isdigit() or int(quantity) < 1:
      		print("⚠️ Invalid quantity.")
      		continue
 
-    This rejects 0, negative numbers, decimal numbers, and text.
+    This prevents users from selecting tasks that do not exist.
 
-    Menu file validation: When reading the menu file, the program checks for valid price values and skips invalid lines:
+    Menu file validation: The application checks whether the user's choice corresponds to an available option.
 
      try:
      		menu.append({"name": name, "size": size, "price": float(price)})
@@ -301,7 +268,8 @@ The application validates all user input to ensure data integrity and a smooth u
      else:
      		print("⚠️ Invalid choice.")
 
-These checks prevent crashes and guide the user to provide correct input, matching the validation requirements described in the project guidelines.
+These validation checks prevent errors and guide users towards entering correct information. They also make the application easier and safer to use.
+
 3. File Processing
 
 The application reads and writes data using files:
